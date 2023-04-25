@@ -80,11 +80,9 @@ int prind(int n, int r, int si)
 	}
 	if (si == 1)
 	{
-		char buffer[1024];
+		char buffer[65];
 		int k;
 
-		if (n < 0)
-			n = -n, _putchar('-');
 		handli(n, buffer);
 		for (k = 0; buffer[k] != '\0'; k++)
 		{
