@@ -66,7 +66,7 @@ int prind(int n, int r)
 	}
 	if (n != 0)
 	{
-		prind(n / 10, i++, f);
+		prind(n / 10, i++);
 		_putchar((n % 10) + '0');
 	}
 	return (i);
