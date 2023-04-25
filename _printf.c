@@ -34,17 +34,17 @@ int _printf(const char *format, ...)
 					str = "(null)";
 				while (*str)
 				{
-					_putchar(*str);
-					str++;
+					_putchar(*str), str++;
 				} c += strlen(str);
-			} else
+			} else if (*format == '\0')
+			{
+				return (-1);
+			}
+			else
 			{
 				c = _putchar('%');
 				c = _putchar(*format);
 			}
-		} else if (*format == '\0')
-		{
-			return (-1);
 		}
 		else
 			c += _putchar(*format);
