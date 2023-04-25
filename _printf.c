@@ -69,7 +69,7 @@ int prind(int n, int r, int si)
 		_putchar('-');
 		i++;
 	}
-	if (n != 0)
+	if (n != 0 && s == 1)
 	{
 		s = 1;
 		prind(n / 10, i++, s);
