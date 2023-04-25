@@ -26,7 +26,6 @@ int _printf(const char *format, ...)
 			if (*format == '%')
 			{
 				c += write(1, "%", 1);
-				return (1);
 			}
 			else if (*format == 'c' || *format == 'd')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
