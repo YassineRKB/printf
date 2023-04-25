@@ -59,7 +59,11 @@ int prind(int n, int r)
 	int i = r;
 
 	if (n < 0)
+	{
 		n = -n;
+		_putchar('-');
+		i++;
+	}
 	if (n != 0)
 	{
 		prind(n / 10, i++);
