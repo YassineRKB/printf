@@ -24,11 +24,11 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]), c++;
 		}
-		else if (format[i + 1] == "c")
+		else if (format[i + 1] == 'c')
 		{
 			_putchar(va_arg(ap, int)), c++;
 		}
-		else if (*(format (i + 1)) == "s")
+		else if (format[i + 1] == 's')
 		{
 			str = va_arg(ap, char*);
 			if (str == NULL)
@@ -46,5 +46,6 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]), c++;
 		}
-	} va_end(ap), return (c);
+	} va_end(ap);
+	return (c);
 }
