@@ -2,7 +2,7 @@
 # include <stdarg.h>
 # include <stddef.h>
 # include <string.h>
-
+# include <unistd.h>
 /**
 * _printf - function that produces output according to a format.
 * @format: format
@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 			return (-1);
 		}
 		else
-			c += _putchar(*format);
+			c += write(1, format, 1);
 		format++;
 	} va_end(ap);
 	return (c);
