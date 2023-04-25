@@ -58,6 +58,8 @@ int prind(int n, int r)
 {
 	int i = r;
 
+	if (n < 0)
+		n = -n;
 	if (n != 0)
 	{
 		prind(n / 10, i++);
