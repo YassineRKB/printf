@@ -32,8 +32,6 @@ int _printf(const char *format, ...)
 				i = va_arg(ap, int), c += prind(i, 0, 1);
 			else if (*format == 'b')
 				i = va_arg(ap, int), c += prind(i, 0, 0);
-			else if (*format == 'r')
-				i = va_arg(ap, int), rev(i);
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
@@ -82,7 +80,7 @@ int prind(int n, int r, int si)
 	}
 	if (si == 1)
 	{
-		char buffer[4096];
+		char buffer[65];
 		int k;
 
 		handli(n, buffer);
