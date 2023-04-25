@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 				c += write(1, "%", 1);
 			else if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
-			else if (*format == 'd')
+			else if (*format == 'd' || *format == 'i')
 				i = va_arg(ap, int), c += prind(i, 0);
 			else if (*format == 's')
 			{
