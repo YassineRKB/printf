@@ -1,5 +1,6 @@
 # include "main.h"
 # include <stdarg.h>
+# include <stddef.h>
 
 /**
 * _printf - function that produces output according to a format.
@@ -10,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
-	char ar[] = {"c","s"};
+	char *ar[] = {"c","s"};
 	char *str;
 	va_list ap;
 
