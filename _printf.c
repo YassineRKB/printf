@@ -10,7 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	int i, len = 0;
+	int i, c = 0, len = 0;
 	char *str;
 	va_list ap;
 
@@ -21,16 +21,27 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] == "c")
+		{
 			_putchar(va_arg(ap, int));
-		if (format[i] == '%' && format[i + 1] == "s")
+			c++;
+		}
+		else if (format[i] == '%' && format[i + 1] == "s")
 		{
 			str = va_arg(ap, char*);
+			if (str == NULL)
+				str = "(null)";
 			while (str[len] != '\0')
 			{
 				_putchar(str[len]);
+				c++;
 			}
+		}
+		else
+		{
+			_putchar(forma[i]);
+			c++;
 		}
 	}
 	va_end(ap);
-	return (0);
+	return (c);
 }
