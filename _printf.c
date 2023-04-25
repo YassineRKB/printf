@@ -23,14 +23,11 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			c += _putchar(*format);
 			if (*format == '%')
 				c += _putchar(*format);
 			if (*format == 'c')
-			{
-				ch = va_arg(ap, int);
-				c += _putchar(ch);
-			} else if (*format == 's')
+				ch = va_arg(ap, int), c += _putchar(ch);
+			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
 				if (str == NULL)
@@ -40,6 +37,10 @@ int _printf(const char *format, ...)
 					_putchar(*str);
 					str++;
 				} c += strlen(str);
+			} else
+			{
+				c = _putchar(*(format - 1));
+				c = _putchar(*format)
 			}
 		} else if (*format == '\0')
 		{
