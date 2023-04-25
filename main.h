@@ -3,6 +3,6 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int prind(int n, int r);
+int prind(int n, int r, int si);
 
 #endif

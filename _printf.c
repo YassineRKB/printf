@@ -28,7 +28,10 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
 			else if (*format == 'd' || *format == 'i')
-				i = va_arg(ap, int), c += prind(i, 0);
+			{
+				i = va_arg(ap, int);
+				(i == 0) ? (c += prind(i, 0, 0)) : (c += prind(i, 0, 1));
+			}
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
@@ -54,10 +57,11 @@ int _printf(const char *format, ...)
 * @r: len of %d
 * Return: len
 **/
-int prind(int n, int r)
+int prind(int n, int r, int si)
 {
-	int i = r;
+	int i = r, s;
 
+	s = si;
 	if (n < 0)
 	{
 		n = -n;
@@ -66,8 +70,14 @@ int prind(int n, int r)
 	}
 	if (n != 0)
 	{
-		prind(n / 10, i++);
+		s = 1;
+		prind(n / 10, i++, s);
 		_putchar((n % 10) + '0');
+	}
+	if (n == 0 && s == 0)
+	{
+		_putchar(0 + '0');
+		return (1);
 	}
 	return (i);
 }
