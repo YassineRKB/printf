@@ -31,10 +31,7 @@ int _printf(const char *format, ...)
 				i = va_arg(ap, int), c += prind(i, 0);
 			else if (*format == 's')
 			{
-				str = va_arg(ap, char *);
-				if (str == NULL)
-					str = "(null)";
-				c += write(1, str, strlen(str));
+				str = va_arg(ap, char *), c += prins(str);
 			} else if (*format == '\0')
 			{
 				return (-1);
@@ -47,6 +44,12 @@ int _printf(const char *format, ...)
 		format++;
 	} va_end(ap);
 	return (c);
+}
+int prins(char * s)
+{
+	if (s == NULL)
+		s = "(null)";
+	return (write(1, s, strlen(s)));
 }
 /**
 * prind - handles %d number print
