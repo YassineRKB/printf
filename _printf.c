@@ -23,9 +23,10 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '%')
+			if (*format == '%' && *format + 1 == '\0')
 			{
 				c += write(1, "%", 1);
+				return (1);
 			}
 			if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
