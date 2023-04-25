@@ -28,10 +28,10 @@ int _printf(const char *format, ...)
 				c += write(1, "%", 1);
 			else if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
-			else if (*format == 'd')
+			else if (*format == 'd' || *format == 'i')
 				i = va_arg(ap, int), c += prind(i, 0, 1);
-			else if (*format == 'i')
-				i = va_arg(ap, int), c += prind(i, 0, 1);
+			else if (*format == 'b')
+				i = va_arg(ap, int), c += prind(i, 0, 0);
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
@@ -64,16 +64,18 @@ int prind(int n, int r, int si)
 
 	if (si == 0)
 	{
-		if (n < 0)
+		char buffer[8];
+		int k, len = 0;
+
+		for (k = 0; k < 8; ++k)
 		{
-			n = -n;
-			_putchar('-');
-			i++;
+			buffer[7 - k] = '0' + (n % 2);
+			n = n / 2;
 		}
-		if (n != 0)
+		while (buffer[len] != '\0')
 		{
-			prind(n / 10, i++, si);
-			_putchar((n % 10) + '0');
+			_putchar(buffer[len]);
+			len++;
 		}
 	}
 	if (si == 1)
