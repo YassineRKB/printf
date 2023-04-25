@@ -27,11 +27,10 @@ int _printf(const char *format, ...)
 				c += write(1, "%", 1);
 			else if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
-			else if (*format == 'd' || *format == 'i')
-			{
-				i = va_arg(ap, int);
-				(i == 0) ? (c += prind(i, 0, 0)) : (c += prind(i, 0, 1));
-			}
+			else if (*format == 'd')
+				i = va_arg(ap, int), c += prind(i, 0, 0);
+			else if (*format == 'i')
+				i = va_arg(ap, int), c += prind(i, 0, 1);
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
@@ -60,25 +59,30 @@ int _printf(const char *format, ...)
 **/
 int prind(int n, int r, int si)
 {
-	int i = r, s;
+	int i = r;
 
-	s = si;
-	if (n < 0)
+	if (si == 0)
 	{
-		n = -n;
-		_putchar('-');
-		i++;
+		if (n < 0)
+		{
+			n = -n;
+			_putchar('-');
+			i++;
+		}
+		if (n != 0)
+		{
+			prind(n / 10, i++, si);
+			_putchar((n % 10) + '0');
+		}
 	}
-	if (n != 0 && s == 1)
+	if (si == 1)
 	{
-		s = 1;
-		prind(n / 10, i++, s);
-		_putchar((n % 10) + '0');
+		if (n == 0)
+		{
+			_putchar(0 + '0');
+			return (1);
+		}
 	}
-	if (n == 0 && s == 0)
-	{
-		_putchar(0 + '0');
-		return (i);
-	}
+
 	return (i);
 }
