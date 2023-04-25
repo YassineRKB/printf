@@ -83,6 +83,8 @@ int prind(int n, int r, int si)
 		char buffer[1024];
 		int k;
 
+		if (n < 0)
+			n = -n;
 		handli(n, buffer);
 		for (k = 0; buffer[k] != '\0'; k++)
 		{
