@@ -43,11 +43,11 @@ int _printf(const char *format, ...)
 			else
 			{
 				c += _putchar('%');
-				c += write(1, format, 1);
+				c += _putchar(*format);
 			}
 		}
 		else
-			c += write(1, format, 1);
+			c += _putchar(*format);
 		format++;
 	} va_end(ap);
 	return (c);
