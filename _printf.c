@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
-	char *ar[] = {"c","s"};
+	char *ar[] = {"c", "s"};
 	char *str;
 	va_list ap;
 
@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1] == ar[1])
 		{
 			str = va_arg(ap, char*);
-			while(str[len] != '\0')
+			while (str[len] != '\0')
 			{
 				_putchar(str[len]);
 			}
