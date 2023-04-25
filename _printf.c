@@ -3,6 +3,7 @@
 # include <stddef.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdio.h>
 /**
 * _printf - function that produces output according to a format.
 * @format: format
@@ -79,8 +80,13 @@ int prind(int n, int r, int si)
 	{
 		if (n == 0)
 		{
-			_putchar(0 + '0');
+			_putchar(0);
 			return (1);
+		}
+		else
+		{
+			prind(n / 10, i++, si);
+			_putchar((n % 10) + '0');
 		}
 	}
 
