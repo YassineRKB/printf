@@ -80,7 +80,7 @@ int prind(int n, int r, int si)
 	}
 	if (si == 1)
 	{
-		char buffer[65];
+		char buffer[1024];
 		int k;
 
 		handli(n, buffer);
