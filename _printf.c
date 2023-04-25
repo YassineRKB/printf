@@ -11,7 +11,7 @@
 
 int _printf(const char *format, ...)
 {
-	int c = 0;
+	int i, c = 0;
 	char *str, ch;
 	va_list ap;
 
@@ -24,11 +24,11 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '%')
-			{
 				c += write(1, "%", 1);
-			}
-			else if (*format == 'c' || *format == 'd')
+			else if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
+			else if (*format == 'd')
+				i = va_arg(ap, int), c += prind(i, 0);
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
@@ -40,14 +40,28 @@ int _printf(const char *format, ...)
 				return (-1);
 			}
 			else
-			{
-				c += write(1, "%", 1);
-				c += write(1, format, 1);
-			}
+				c += write(1, "%", 1), c += write(1, format, 1);
 		}
 		else
 			c += write(1, format, 1);
 		format++;
 	} va_end(ap);
 	return (c);
+}
+/**
+* prind - handles %d number print
+* @n: number to print
+* @r: len of %d
+* Return: len
+**/
+int prind(int n, int r)
+{
+	int i = r;
+
+	if (n != 0)
+	{
+		prind(n / 10, i++);
+		_putchar((n % 10) + '0');
+	}
+	return (i);
 }
