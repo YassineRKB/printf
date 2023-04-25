@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'b')
 				i = va_arg(ap, int), c += prind(i, 0, 0);
 			else if (*format == 'r')
-				i = va_arg(ap, int), c += prind(i, 0, 1);
+				i = va_arg(ap, int), rev(i);
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
