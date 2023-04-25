@@ -1,6 +1,7 @@
 # include "main.h"
 # include <stdarg.h>
 # include <stddef.h>
+# include <string.h>
 
 /**
 * _printf - function that produces output according to a format.
@@ -10,7 +11,7 @@
 
 int _printf(const char *format, ...)
 {
-	int i, c = 0, len = 0;
+	int i, c = 0;
 	char *str, ch;
 	va_list ap;
 
@@ -20,25 +21,21 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	for (i = 0; format[i]; i++)
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && (format[i + 1] == 'c' || format[i + 1] == 's'))
 		{
-			_putchar(format[i]), c++;
-		}
-		else if (format[i + 1] == 'c')
-		{
-			ch = va_arg(ap, int);
-			_putchar(ch), c++;
-		}
-		else if (format[i + 1] == 's')
-		{
-			str = va_arg(ap, char *);
-			if (str == NULL)
-				str = "(null)";
-			while (str[len])
+			c += _putchar(format[i]);
+			if (format[i + 1] == 'c')
 			{
-				_putchar(str[len]);
+				ch = va_arg(ap, int);
+				c += _putchar(ch);
 			}
-			c += len;
+			else if (format[i + 1] == 's')
+			{
+				str = va_arg(ap, char *);
+				if (str == NULL)
+					str = "(null)";
+				c += _putchar(strlen(str));
+			}
 		}
 		else if (format[i] == '\0')
 		{
@@ -46,7 +43,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(format[i]), c++;
+			c += _putchar(format[i]);
 		}
 	} va_end(ap);
 	return (c);
