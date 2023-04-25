@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 			} else
 			{
 				c = _putchar(*(format - 1));
-				c = _putchar(*format)
+				c = _putchar(*format);
 			}
 		} else if (*format == '\0')
 		{
