@@ -3,7 +3,7 @@
 # include <stddef.h>
 # include <string.h>
 # include <unistd.h>
-# include <stdio.h>
+
 /**
 * _printf - function that produces output according to a format.
 * @format: format
@@ -78,17 +78,45 @@ int prind(int n, int r, int si)
 	}
 	if (si == 1)
 	{
-		if (n == 0)
+		char buffer[21];
+		int k;
+
+		handli(n, buffer);
+		for (k = 0; buffer[k] != '\0'; k++)
 		{
-			_putchar(0);
-			return (1);
-		}
-		else
-		{
-			prind(n / 10, i++, si);
-			_putchar((n % 10) + '0');
+			_putchar(buffer[k]);
+			i++;
 		}
 	}
 
 	return (i);
+}
+/**
+* handli - convert int to string
+* @i: int
+* @b: string
+* Return: string.
+**/
+char *handli(int i, char b[])
+{
+	char const digits[] = "0123456789";
+	char *p = b;
+	int shift;
+
+	if (i < 0)
+	{
+		*p++ = '-';
+		i *= -1;
+	}
+	shift = i;
+	do {
+		++p;
+		shift = shift / 10;
+	} while (shift);
+	*p = '\0';
+	do {
+		*--p = digits[i % 10];
+		i = i / 10;
+	} while (i);
+	return (b);
 }
