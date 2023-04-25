@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 				ch = va_arg(ap, int), c += write(1, &ch, 1);
 			else if (*format == 'd')
-				i = va_arg(ap, int), c += prind(i, 0, 0);
+				i = va_arg(ap, int), c += prind(i, 0, 1);
 			else if (*format == 'i')
 				i = va_arg(ap, int), c += prind(i, 0, 1);
 			else if (*format == 's')
