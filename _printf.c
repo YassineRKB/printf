@@ -58,6 +58,11 @@ int prind(int n, int r)
 {
 	int i = r;
 
+	if (n == 0)
+	{
+		_putchar(0 + '0');
+		return (1);
+	}
 	if (n < 0)
 	{
 		n = -n;
