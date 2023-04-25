@@ -78,7 +78,7 @@ int prind(int n, int r, int si)
 	}
 	if (si == 1)
 	{
-		char buffer[21];
+		char buffer[65];
 		int k;
 
 		handli(n, buffer);
