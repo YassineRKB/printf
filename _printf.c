@@ -55,6 +55,7 @@ int _printf(const char *format, ...)
 * prind - handles %d number print
 * @n: number to print
 * @r: len of %d
+* @si: flag
 * Return: len
 **/
 int prind(int n, int r, int si)
@@ -77,7 +78,7 @@ int prind(int n, int r, int si)
 	if (n == 0 && s == 0)
 	{
 		_putchar(0 + '0');
-		return (1);
+		return (i);
 	}
 	return (i);
 }
