@@ -14,10 +14,10 @@ int _printf(const char *format, ...)
 	char *str;
 	va_list ap;
 
-	va_start (ap, format);
 	if (format == NULL)
 		return (-1);
 
+	va_start(ap, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] == ar[0])
