@@ -18,30 +18,33 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(ap, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i]; i++)
 	{
-		if (format[i] == '%' && format[i + 1] == "c")
+		if (format[i] == '%')
 		{
-			_putchar(va_arg(ap, int));
-			c++;
+			_putchar(format[i]), c++;
 		}
-		else if (format[i] == '%' && format[i + 1] == "s")
+		else if (format[i + 1] == "c")
+		{
+			_putchar(va_arg(ap, int)), c++;
+		}
+		else if (*(format (i + 1)) == "s")
 		{
 			str = va_arg(ap, char*);
 			if (str == NULL)
 				str = "(null)";
 			while (str[len] != '\0')
 			{
-				_putchar(str[len]);
-				c++;
+				_putchar(str[len]), c++;
 			}
+		}
+		else if (format[i] == '\0')
+		{
+			return (-1);
 		}
 		else
 		{
-			_putchar(forma[i]);
-			c++;
+			_putchar(format[i]), c++;
 		}
-	}
-	va_end(ap);
-	return (c);
+	} va_end(ap), return (c);
 }
