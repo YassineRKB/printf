@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
-		if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's'))
+		if (*format == '%')
 		{
 			c += _putchar(*format);
 			if (*(format + 1) == '%')
