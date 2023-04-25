@@ -34,10 +34,7 @@ int _printf(const char *format, ...)
 			str = va_arg(ap, char *);
 			if (str == NULL)
 				str = "(null)";
-			while (str[len] != '\0')
-			{
-				_putchar(str[len]), c++;
-			}
+			_putchar(str), c += strlen(str);
 		}
 		else if (format[i] == '\0')
 		{
