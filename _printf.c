@@ -15,13 +15,15 @@ int _printf(const char *format, ...)
 	char *str, ch;
 	va_list ap;
 
+	if (format == NULL)
+		return (-1);
 	va_start(ap, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '%' && *(format + 1) == '\0')
+			if (*format == '%')
 			{
 				c += write(1, "%", 1);
 				return (1);
