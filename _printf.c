@@ -26,16 +26,13 @@ int _printf(const char *format, ...)
 			if (*format == '%')
 				c += _putchar('%');
 			if (*format == 'c')
-				ch = va_arg(ap, int), c += _putchar(ch);
+				ch = va_arg(ap, int), c += write(1, &ch, 1);
 			else if (*format == 's')
 			{
 				str = va_arg(ap, char *);
 				if (str == NULL)
 					str = "(null)";
-				while (*str)
-				{
-					_putchar(*str), str++;
-				} c += strlen(str);
+				c += write(1, str, strlen(str));
 			} else if (*format == '\0')
 			{
 				return (-1);
