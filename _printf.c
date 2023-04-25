@@ -88,25 +88,9 @@ int prind(int n, int r, int si)
 			i++;
 		}
 	}
-	if (si == 2)
-	{
-		char buffer[4096];
-
-		handli(n, buffer);
-
-	}
 
 	return (i);
 }
-void rev(char str)
-{
-	if (str != '\0')
-	{
-		rev((str + 1));
-	}
-	write(1, &str, 1);
-}
-
 /**
 * handli - convert int to string
 * @i: int
